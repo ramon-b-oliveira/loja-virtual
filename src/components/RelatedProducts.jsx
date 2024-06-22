@@ -1,17 +1,22 @@
 import React from "react";
-import Product from "./Product.jsx";
 
-const RelatedProducts = ({ RelatedProducts }) => {
-    return (
-        <div className="related-products">
-            <h3>Produtos Relacionados</h3>
-            <div className="product-list">
-                {RelatedProducts.map(product => (
-                    <Product key={product.id} product={product} />
-                ))}
-            </div>
+const RelatedProducts = ({ relatedProducts }) => {
+  if (!relatedProducts){
+    return null;
+  }
+
+  return (
+    <div>
+      <h2>Produtos Relacionados</h2>
+      {relatedProducts.map(product => (
+        <div key={product.id}>
+          <img src={product.image} alt={product.name} style={{ width: '100px', height: '100px' }} />
+          <h3>{product.name}</h3>
+          <p>{product.price}</p>
         </div>
-    );
-};
+      ))}
+    </div>
+  );
+}
 
 export default RelatedProducts;

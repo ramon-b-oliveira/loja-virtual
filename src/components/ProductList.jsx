@@ -1,17 +1,18 @@
 import React from "react";
-import Product from "./Product";
 
-const ProductList = ({ products }) => {
+const ProductList = ({ products, onSelectProduct }) => {
   return (
     <div>
-      <h2>Produtos Disponiveis</h2>
-      <div className="product-list">
-        {products.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
-      </div>
+      {products.map(product => (
+        <div key={product.id}>
+          <img src={product.image} alt={product.name} style={{ width: '100px', height: '100px' }} />
+          <h2>{product.name}</h2>
+          <p>${product.price}</p>
+          <button onClick={() => onSelectProduct(product)}>Ver Detalhes</button>
+        </div>
+      ))}
     </div>
   );
-};
+}
 
 export default ProductList;

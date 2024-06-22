@@ -1,26 +1,17 @@
-import React from 'react';
+import React from "react";
 
 const Cart = ({ cartItems }) => {
-    return (
-        <div className='cart'>
-            <h2>Carrinho de Compras</h2>
-            {cartItems.length === 0 ? (
-                <p>O carrinho est vazio.</p>
-            ) : (
-                <div>
-                    <ul>
-                        {cartItems.map(item => (
-                            <li key={item.id}>
-                                {item.name} - ${item.price}
-                            </li>
-                        ))}
-                    </ul>
-                    <p>Total: ${cartItems.reduce((total, item) => total + item.price, 0)}</p>
-                    <button>Finalizar Compra</button>
-                </div>
-            )}
+  return (
+    <div>
+      <h2>Carrinho</h2>
+      {cartItems.map((item, index) => (
+        <div key={index}>
+          <img src={item.image} alt={item.name} style={{ width: '100px', height: '100px' }} />
+          <h3>{item.name}</h3>
         </div>
-    )
+      ))}
+    </div>
+  );
 }
 
 export default Cart;
